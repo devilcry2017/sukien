@@ -1,0 +1,177 @@
+{
+  "_comment": "--------------------------login_register-----------------------",
+  "account": "Account",
+  "password": "Password",
+  "back_to_home": "Back to home page",
+  "login_system": "Login to system",
+  "password_recovery": "Password recovery",
+  "email_recovery" : "Email recovery",
+  "login": "Login",
+  "restore" : "Restore",
+  "error_login_blank":"Account and password can not be blank",
+  "error_login_notCorrect":"* Account or password is incorrect",
+  "title_login_page": "Login to system",
+  "title_password_recovery_page": "Password recovery",
+  "forgot_your_password":"Forgot your password ?",
+
+  "title_home_page": "Home",
+
+  "_comment": "--------------------------menu_page----------------------------",
+  "m_home": "Home",
+  "m_home_url": "/home.html",
+  "m_about": "About us",
+  "m_about_url": "/about-us.html",
+  "m_news": "News",
+  "m_news_url": "/news.html",
+  "m_contact": "Contact us",
+  "m_contact_url": "/contact-us.html",
+
+  "_comment": "--------------------------template all------------------------",
+  "website":"Website",
+  "tax_code":"Tax code",
+  "fax":"Fax",
+  "logo":"Logo",
+  "favicon":"Favicon",
+  "google_map_code":"Google map code",
+  "google_analytics_code":"Google analytics code",
+  "company_store_name":"Company name / store name",
+  "address":"Address",
+  "ip_address":"IP Address",
+  "phone":"Phone",
+  "hotline":"Hotline",
+  "email":"Email",
+  "copyright":"Copyright",
+  "time_login":"Login time",
+
+
+  "_comment": "--------------------------administrator------------------------",
+  "a_show_hide": "Hide * Show",
+  "a_view_website": "View website",
+  "a_hi": "Hello",
+  "a_top_staff": "Employee manager",
+  "a_top_account": "Account and password",
+  "a_top_logout": "Logout",
+  "a_ms_error" : "<div class='background-error'><i class='fa fa-exclamation-circle' aria-hidden='true'></i> An error has occurred, please review the fields marked *</div>",
+  "a_ms_error_dell_notcheck": "<div class='background-error'><i class='fa fa-exclamation-circle' aria-hidden='true'></i> You must check the line to delete, at least 1 line.</div>",
+  "a_ms_error_dell" : "Delete will not recover. Are you sure ?",
+  "a_ms_finish" : "Successful operation !",
+  "a_search_placeholder":"Keyword search...",
+
+  "_comment": "--administrator template---------------------------------",
+  "a_template_system": "Admin control",
+  "a_template_menu": "MENU",
+  "a_template_overview": "Overview",
+  "a_template_btn_add": "Add",
+  "a_template_btn_edit": "Edit",
+  "a_template_btn_dell": "Delete",
+  "a_template_btn_save": "Save",
+  "a_template_btn_back": "Back",
+  "a_template_btn_filter": "Filter",
+  "a_template_default": "Default",
+  "a_template_code": "Code",
+  "a_template_country": "Country",
+  "a_template_name_display": "Display name",
+  "a_template_status": "Status",
+  "a_template_arrange": "Arrangement",
+  "a_template_views": "Views",
+  "a_template_hightlights": "Hightlights",
+  "a_template_small_description": "Small description",
+  "a_template_description": "Description",
+  "a_template_meta_title": "Meta title",
+  "a_template_meta_description": "Meta description",
+  "a_template_meta_keyword": "Meta keyword",
+  "a_template_on": "<span class='color_green'>On</span>",
+  "a_template_off": "<span class='color_red pull-right'>Off</span>",
+  "a_template_select_cat": "Choose a category",
+  "a_template_cat_name": "Category name",
+  "a_template_news_name": "News name",
+  "a_template_products_name": "Product's name",
+  "a_template_avatar": "Avatar",
+  "a_template_not_selected": "----- Not selected -----",
+
+  "_comment": "----------upload file -----",
+  "_error_file_upload" : "Please choose file upload",
+  "_error_file_upload_extension": "File upload only: *jpg *jpeg *gif *png *svg",
+
+  "_comment": "--end administrator template------------------------------",
+
+  "_comment": "--administrator menu-------------------------------------",
+  "a_m_system": "System",
+  "a_m_system_config": "System configuration",
+
+  "a_m_system_lang": "Language configuration",
+  "a_system_lang_note": "* Note: Configure the system language. Contact the programmer to perform (add 1 language = 60% of the sites)",
+
+  "a_m_system_money": "Currency configuration",
+
+  "a_m_sale": "Sale",
+  "a_m_sale_order": "Order Management",
+  "a_m_sale_customer": "Customer management",
+  "a_m_sale_email": "Email marketing",
+  "a_m_sale_voucher": "Voucher management",
+  "a_m_sale_shipping": "Area and shipping",
+  "a_m_sale_bank": "Bank management",
+
+  "hr": "Human resource management",
+
+  "a_m_product": "Product",
+  "a_m_product_management": "Product Management",
+
+  "a_m_product_category": "Product Categories",
+  "a_m_product_category_add": "Add product catalog",
+  "a_m_product_category_edit": "Edit product catalog",
+
+  "a_m_product_list": "List of products",
+  "a_m_product_add": "Add product",
+  "a_m_product_edit": "Edit product",
+
+  "a_m_product_madein": "Origin Configuration",
+  "a_m_product_size": "Size configuration",
+  "a_m_product_color": "Color configuration",
+  "a_m_product_weight": "Weight configuration",
+
+
+  "a_m_news": "News",
+  "a_m_news_catgory": "News category",
+  "a_m_news_catgory_add": "Add news category",
+  "a_m_news_catgory_edit": "Edit news category",
+  "a_m_news_list": "List of news",
+  "a_m_news_add": "Add new news",
+  "a_m_news_edit": "Edit news",
+  "a_m_news_management": "News management",
+
+
+  "a_m_statistic": "Statistic",
+  "a_m_statistic_revenues": "Revenue and expenditure statistics",
+  "a_m_statistic_liabilities": "Statistics liabilities",
+  "a_m_statistic_order": "Statistics orders",
+
+
+  "a_m_module": "Expansion modules",
+  "a_m_module_online_support": "Online support",
+  "a_m_module_slideshow": "Slideshow management",
+  "a_m_module_banner": "Banner management",
+
+  "a_m_storage": "Storage",
+  "a_m_storage_file": "Files and images",
+  "a_m_storage_comment": "Comment",
+  "a_m_storage_evaluate": "Evaluate",
+
+  "a_m_login_history": "Login History",
+
+  "_comment": "--end administrator menu------------------",
+
+  "_comment": "----------footer adonistrator -----",
+  "a_footer_version": "<b>Version</b> 1.0 - 2017/06/24",
+  "a_footer_dev": "&copy; Web development <a href='https://www.facebook.com/devilcry1989' target='_blank'>Quoc Bao</a> | Phone: (+84) 937 587 087",
+  "_comment": "--------end footer adonistrator----",
+
+  "a_lang_mesage_note": "Liên hệ quản trị viên <b>&nbsp; Nguyễn Bảo Quốc &nbsp;</b> để được tư vấn quản lý ngôn ngữ :<br/>- Phone: 0937 587 087<br/>- Email : quocbao.thietke.laptrinhweb@gmail.com<br/>- Facebook: <a href='https://www.facebook.com/devilcry1989' target='_blank'>https://www.facebook.com/devilcry1989</a>",
+
+  "_comment": "--admin language page----------------------------------------------------------"
+
+
+
+
+
+}

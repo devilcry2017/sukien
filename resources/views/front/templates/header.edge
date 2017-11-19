@@ -1,0 +1,45 @@
+
+<div class="banner">
+    <div class="min_wrap">
+        <a class="logo" href="{{url_host}}">
+            @raw
+              <img src="{{url_host}}images/logo/{{system[0].logo}}" alt="{{header[0].logo}}">
+            @endraw
+        </a>
+        <div class="adv_hea">
+            <div style="height: 90px; width: 728px; overflow:hidden; position:relative">
+              @raw
+                <a href="{{banner_top.banner_alias}}" title="{{banner_top.banner_name}}" target="_blank">
+                    <img src="/images/banner/{{banner_top.banner_image}}" alt="{{banner_top.banner_description}}"/>
+                </a>
+              @endraw
+            </div>
+        </div><!-- End .adv_hea -->
+    </div><!-- End .min_wrap -->
+</div><!-- End .banner -->
+
+<nav class="nav_mn">
+    <div class="min_wrap">
+        <ul class="ul_mn clearfix">
+            @raw
+            <li ng-repeat="val in menu">
+              <a href="{{ val.alias }}" ng-if="val.parent_id == 0">
+                {{ val.cat_name }}
+              </a>
+              <ul class="mn_child_01" ng-repeat="val2 in menu" ng-if="val2.parent_id == val.id">
+                <li ng-repeat="val2 in menu" ng-if="val2.parent_id == val.id">
+                  <a href="{{ val2.alias }}">
+                    {{ val2.cat_name }}
+                  </a>
+                </li>
+              </ul>
+            </li>
+            @endraw
+        </ul>
+      </li>
+    </ul>
+
+        <a class="btn_dtbds" href="/dang-tin-su-kien">Đăng tin sự kiện</a>
+        <a class="icon_menu_mobile" val="0" rel="nofollow"></a>
+    </div>
+</nav>

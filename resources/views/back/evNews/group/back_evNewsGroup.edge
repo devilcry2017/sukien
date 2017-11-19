@@ -1,0 +1,107 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <button type="button" class="btn bg-maroon pull-right" onclick="postFromConfirm()" title="{{lang_ad.a_template_btn_dell}}">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+    </button>
+    <input type="text" ng-model="search" class="form-control ad_search" placeholder="{{lang_ad.a_search_placeholder}}">
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12"  ng-controller="evNewsGroup">
+      <div class="ev_cat_add">
+        <form method="POST" action="{{ route('BackController.evNewsGroupAdd') }}" id="ad_form">
+          {{ csrfField() }}
+          {{lang_ad.ev_group_add}}
+          <input type="text" name="txtName" />
+          <select name="sltType">
+            <option value="1">{{{lang_ad.ev_type_1}}}</option>
+            <option value="0">{{{lang_ad.ev_type_0}}}</option>
+          </select>
+          <button title="{{lang_ad.a_template_btn_add}}" class="btn bg-navy"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </form>
+      </div>
+      <form method="POST" action="{{ route('BackController.evNewsGroupDel') }}" id="deleteForm">
+          {{ csrfField() }}
+          <table class="table table-list table-hover">
+            <thead>
+              <tr>
+                <th style="width:80px;"  ng-click="sort('id')">
+                  ID <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+                  <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </td>
+                <th  ng-click="sort('name')">
+                  {{lang_ad.a_template_name_display}}
+                  <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th  ng-click="sort('type')">
+                  {{lang_ad.ev_type}}
+                  <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+
+                <th  ng-click="sort('status')">
+                  {{lang_ad.a_template_status}}
+                  <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th  ng-click="sort('arrange')">
+                  {{lang_ad.a_template_arrange}}
+                  <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='arrange'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                </th>
+                <th style="width:80px;">
+                  <i class="fa fa-wrench" aria-hidden="true"></i>
+                  <input type="checkbox" onclick="checked_all(this)" class="pull-right">
+                </th>
+              </tr>
+            </thead>
+            @raw
+            <tbody>
+              <tr dir-paginate="(key, val) in  evNewsGroup|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                <td>{{val.id}}</td>
+                <td>
+                  {{val.group_description}}
+                </td>
+                <td>
+                    <p ng-if="val.group_type != 1" class="pull-left">
+                      <span ng-bind-html="lang_ad.ev_type_0"></span>
+                    </p>
+                    <p ng-if="val.group_type == 1" class="pull-right">
+                      <span ng-bind-html="lang_ad.ev_type_1"></span>
+                    </p>
+                </td>
+                <td>
+                  <p ng-if="val.group_status == 1" class="pull-left">
+                    <span ng-bind-html="lang_ad.a_template_on"></span>
+                  </p>
+                  <p ng-if="val.group_status != 1" class="pull-right">
+                    <span ng-bind-html="lang_ad.a_template_off"></span>
+                  </p>
+                </td>
+                <td>
+                  {{val.group_sort}}
+                </td>
+                <td>
+                    <a href="/administrator/evNewsGroup/edit/{{val.id}}" title="{{lang_ad.a_template_btn_edit}}">
+                      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                    </a>
+                    <input type="checkbox" name="ckb[]" value="{{val.id}}" class="pull-right">
+                </td>
+              </tr>
+            </tbody>
+            @endraw
+          </table>
+      </form>
+      <dir-pagination-controls
+         max-size="5"
+         direction-links="true"
+         boundary-links="true" >
+      </dir-pagination-controls>
+  </div>
+
+@endsection

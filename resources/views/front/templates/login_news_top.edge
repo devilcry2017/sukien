@@ -1,0 +1,19 @@
+<div class="fh_1">
+    <ul class="ul_fh_1 clearfix">
+        <li>
+            <a href="#" rel="nofollow">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                Đăng nhập / Đăng ký
+            </a>
+        </li>
+    </ul>
+    <div class="text_marquee" ng-controller="newsLastestLimit2">
+        <marquee>
+          @raw
+              <a ng-repeat="val in newsLastestLimit2" title="{{val.news_name}}" href="{{val.news_alias}}">
+                <i class="fa fa-certificate" aria-hidden="true"></i> {{val.news_name}}
+              </a>
+          @endraw
+        </marquee>
+    </div>
+</div>

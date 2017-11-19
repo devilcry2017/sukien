@@ -1,0 +1,135 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <button type="button" class="btn bg-olive pull-right" onclick="postFrom()" title="{{lang_ad.a_template_btn_save}}">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12">
+  <form method="POST" action="{{ route('BackController.systemPost') }}" enctype="multipart/form-data" id="adForm">
+      {{ csrfField() }}
+      <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#tab_0" data-toggle="tab">
+                <i class="fa fa-tachometer" aria-hidden="true"></i> {{ lang_ad.a_template_overview }}
+              </a>
+            </li>
+            @each(val in language_a)
+            <li>
+              <a href="#tab_{{val.id}}" data-toggle="tab">
+                <img src="/images/flags/{{ val.image }}" />
+                {{ val.name }}
+              </a>
+            </li>
+            @endeach
+          </ul>
+          <div class="tab-content system_tab">
+            <div class="tab-pane active" id="tab_0">
+                <table class="table table-condensed">
+                  <tr>
+                    <td style="width:25%">
+                      {{lang_ad.logo}}
+                      <br/>
+                       <span class="ad_note">*150x100 px | *jpg  *png  *jpeg</span>
+                    </td>
+                    <td>
+                      @if(systems_logo.systems_description != null)
+                        <img src="/images/logo/{{systems_logo.systems_description}}" alt="{{systems_logo.systems_description}}" class="ad_logo"/>
+                      @endif
+                      <input type="file" id="flLogo" name="flLogo">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      {{lang_ad.favicon}}
+                      <br/>
+                      <span class="ad_note">*16x16 px | *png</span>
+                    </td>
+                    <td>
+                      @if(systems_favicon.systems_description != null)
+                        <img src="/images/fav/{{systems_favicon.systems_description}}" alt="{{systems_favicon.systems_description}}" class="ad_fav"/>
+                      @endif
+                      <input type="file" id="flFavicon" name="flFavicon">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.website}}</td>
+                    <td><input type="text" class="form-control" name="txtWebsite" value="{{systems_website.systems_description}}"></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.google_map_code}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtGoogleMap">{{systems_google_map.systems_description}}</textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.google_analytics_code}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtGoogleAnalytic">{{systems_google_analytic.systems_description}}</textarea></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      {{lang_ad.a_m_system_money}}
+                    </td>
+                    <td>
+                      {{ad_currency_default.currency_code}} - {{ad_currency_default.currency_name}}
+                      <input type="text" name="txtCurrency[{{ad_currency_default.currency_code}}]" value="{{ad_currency_default.currency_value}}" disabled="" class="form-control">
+                      <input type="hidden" name="txtCurrencyCode[]" value="{{ad_currency_default.currency_code}}" >
+                      <p class="ad_currency_exchange">
+                        <i class="fa fa-arrows-v" aria-hidden="true"></i>
+                      </p>
+                      {{ad_currency_normal.currency_code}} - {{ad_currency_normal.currency_name}}
+                      <input type="text" name="txtCurrency" value="{{ad_currency_normal.currency_value}}" class="form-control">
+                      <input type="hidden" name="txtCurrencyCode[]" value="{{ad_currency_normal.currency_code}}" >
+                    </td>
+                  </tr>
+                </table>
+            </div>
+
+            @each(val in language_a)
+            <div class="tab-pane" id="tab_{{val.id}}">
+            <table class="table table-condensed">
+              <tr>
+                <td style="width:25%">{{lang_ad.company_store_name}}</td>
+                <td><input type="text" class="form-control" name="txtCompanyStore[{{val.language_code}}]" value="{{ getForIndex(systems_company_name, $loop.index).systems_description }}"></td>
+              </tr>
+              <tr>
+                <td>{{lang_ad.address}}</td>
+                <td><input type="text" class="form-control" name="txtAddress[{{val.language_code}}]" value="{{getForIndex(systems_company_address, $loop.index).systems_description}}"></td>
+              </tr>
+              <tr>
+                <td>{{lang_ad.email}}</td>
+                <td><input type="text" class="form-control" name="txtEmail[{{val.language_code}}]" value="{{getForIndex(systems_company_email, $loop.index).systems_description}}"></td>
+              </tr>
+              <tr>
+                <td>{{lang_ad.phone}}</td>
+                <td><input type="text" class="form-control" name="txtPhone[{{val.language_code}}]" value="{{getForIndex(systems_company_phone, $loop.index).systems_description}}"></td>
+              </tr>
+              <tr>
+                <td>{{lang_ad.hotline}}</td>
+                <td><input type="text" class="form-control" name="txtHotline[{{val.language_code}}]" value="{{getForIndex(systems_company_hotline, $loop.index).systems_description}}"></td>
+              </tr>
+              <tr>
+                <td>{{lang_ad.tax_code}}</td>
+                <td><input type="text" class="form-control" name="txtTaxcode[{{val.language_code}}]" value="{{getForIndex(systems_company_taxcode, $loop.index).systems_description}}"></td>
+              </tr>
+              <tr>
+                <td>{{lang_ad.copyright}}</td>
+                <td><input type="text" class="form-control" name="txtCopyright[{{val.language_code}}]" value="{{getForIndex(systems_copyright, $loop.index).systems_description}}"></td>
+              </tr>
+            </table>
+            </div>
+
+            @endeach
+          </div>
+      </div>
+      </form>
+  </div>
+@endsection

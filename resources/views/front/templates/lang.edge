@@ -1,0 +1,9 @@
+@raw
+<img src="/images/flags/{{ lang_active }}_flag.png" />
+<select id="front_lang">
+  <option value="{{ val.language_code }}" ng-repeat="val in lang_list" value="{{val.id}}"
+    ng-selected="val.language_code == lang_active">
+    {{ val.name }}
+  </option>
+</select>
+@endraw

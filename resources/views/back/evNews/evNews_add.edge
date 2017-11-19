@@ -1,0 +1,109 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <a href="/administrator/evNews" class="btn bg-maroon" title="{{lang_ad.a_template_btn_back}}">
+      <i class="fa fa-undo" aria-hidden="true"></i>
+    </a>
+    <button type="button" class="btn bg-olive pull-right" onclick="postFrom()" title="{{lang_ad.a_template_btn_save}}">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12" ng-controller="evNewsGroup">
+  <form method="POST" action="{{ route('BackController.evNews_add_post') }}" id="adForm" enctype="multipart/form-data">
+      {{ csrfField() }}
+      <div class="nav-tabs-custom">
+          <div class="tab-content system_tab">
+            <div class="tab-pane active" id="tab_0">
+                <div class="col-lg-8 col-xs-8">
+                    <div class="form_title">
+                      <i class="fa fa-asterisk" aria-hidden="true"></i> {{lang_ad.a_template_overview}}
+                    </div>
+                    {{lang_ad.ev_code}}
+                    @raw
+                    <input type="number" name="txtCode" class="form-control width_50" value="{{randomCode}}" readonly>
+                    @endraw
+
+                    {{lang_ad.ev_news_group}}
+                    <select class="form-control" name="sltGroup">
+                      @raw
+                        <option ng-repeat="val in evNewsGroup" value="{{val.id}}">
+                              {{val.group_description}}
+                        </option>
+                      @endraw
+                    </select>
+
+                    {{lang_ad.a_template_views}}
+                    <input type="number" name="txtViews" class="form-control width_50" value="1">
+
+                    {{lang_ad.a_template_hightlights}}
+                    <input type="number" name="txtHightlights" class="form-control width_50" value="1">
+
+                    {{lang_ad.a_template_arrange}}
+                    <input type="number" name="txtArrange" class="form-control width_50" value="1">
+
+                    {{lang_ad.ev_name}} <span class="color_red">*</span>
+                    <input type="text" name="txtName" class="form-control" id="txtName" onkeyup="ChangeToSlug();">
+
+                    {{lang_ad.menu_alias}} <span class="color_red">*</span>
+                    <input type="text" name="txtAlias" class="form-control" id="txtAlias">
+
+                    {{lang_ad.ev_price}} <span class="color_red">*</span>
+                    <input type="number" name="txtPrice" class="form-control width_50" value="">
+
+                    {{lang_ad.ev_price_sale}}  <span class="images_detail_note">{{lang_ad.a_ev_price_node}}</span>
+                    <input type="number" name="txtPriceSale" class="form-control width_50" value="">
+
+                    {{lang_ad.ev_contact_people}} <span class="color_red">*</span>
+                    <input type="text" class="form-control" rows="3" name="txtEvContact">
+
+                    {{lang_ad.ev_contact_phone}} <span class="color_red">*</span>
+                    <td><input type="number" class="form-control width_50" rows="3" name="txtEvContactPhone">
+
+                    {{lang_ad.a_template_small_description}}
+                    <textarea class="form-control" rows="2" name="txtSmallDescription"></textarea>
+
+                    {{lang_ad.a_template_description}}
+                    <textarea id="description" class="form-control" rows="3" name="txtDescription"></textarea>
+                </div>
+
+                <div class="col-lg-4 col-xs-4">
+                    <div class="form_title">
+                      <i class="fa fa-asterisk" aria-hidden="true"></i> SEO
+                    </div>
+                    {{lang_ad.a_template_meta_title}}
+                    <textarea class="form-control" rows="3" name="txtMetaTitle"></textarea>
+
+                    {{lang_ad.a_template_meta_description}}
+                    <textarea class="form-control" rows="3" name="txtMetaDescription"></textarea>
+
+                    {{lang_ad.a_template_meta_keyword}}</td>
+                    <textarea class="form-control" rows="3" name="txtMetaKeyword"></textarea>
+
+                    <div class="form_title">
+                      <i class="fa fa-asterisk" aria-hidden="true"></i> {{lang_ad.ev_images_config}}
+                    </div>
+
+                    {{lang_ad.a_template_avatar}}
+                    <br/>
+                    <img src="/images/no-image.png" id="showImageUpload" class="img_width_100" />
+                    <input type="file" id="flImage" name="flImage" class="form-control">
+
+                    {{lang_ad.ev_image_detail}} <span class="images_detail_note">{{lang_ad.ev_image_detail_note}}</span>
+                    <input type="file" id="flImageDetail" name="flImageDetail[]" multiple class="form-control"/>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+          </div>
+      </div>
+  </form>
+  </div>
+@endsection

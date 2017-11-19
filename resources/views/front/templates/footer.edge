@@ -1,0 +1,27 @@
+<div class="menu_foot">
+    <div class="min_wrap">
+        <ul>
+          @raw
+          <li ng-repeat="val in menu_footer">
+            <a href="{{ val.alias }}" ng-if="val.parent_id == 0">
+              {{ val.cat_name }}
+            </a>
+          </li>
+          @endraw
+        </ul>
+    </div>
+</div><!-- End .menu_foot -->
+<div class="info_foot">
+    <div class="min_wrap">
+    @raw
+        <strong>{{system[7].company_name}}</strong>
+        Địa chỉ: {{system[2].address}}
+        <br>
+        Tel: {{system[4].phone}}
+        - Hotline: {{system[5].hotline}}
+        - Email: <a href="mailto:{{system[3].email}}">{{system[3].email}}</a>
+        <br/>
+        Website:{{system[8].website}} - {{system[9].copyright}}
+    @endraw
+    </div>
+</div>

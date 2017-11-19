@@ -1,0 +1,61 @@
+@layout('front.templates.master')
+
+@section('title')
+{{title}}
+@endsection
+
+
+@section('content')
+
+<section class="filter_home">
+    <div class="min_wrap">
+        @include('front.templates.login_news_top')
+
+        <div class="fh_2">
+            @include('front.templates.searchTop')
+        </div>
+    </div>
+</section>
+
+<section class="f_bg">
+    <div class="min_wrap">
+        <div class="f_home clearfix">
+            <div class="content">
+                <div class="td_nb block_ct">
+                  <div class="pagination">
+                    <a href="{{url_host}}" title="Trang chủ">Trang chủ</a>
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <a>{{{news.news_name}}}</a>
+                  </div>
+                </div>
+                <div class="td_nb block_ct">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>
+                  {{{news.created_at}}}
+                  <h1 class="news_heading">{{{news.news_name}}}</h1>
+                  <p class="small_description">{{{news.small_description}}}</p>
+                  <div class="news_description">
+                    {{{news.description}}}
+                  </div>
+                </div>
+            </div>
+
+           <div class="sidebar">
+                    <div class="block_sb">
+                          <div class="modu_xhb block_sb" ng-controller="frontBannerRight">
+                            @include('front.templates.bannerRight')
+                          </div>
+
+                          <div class="da_sb block_sb" ng-controller="frontNewsViewRight5">
+                            @include('front.templates.newsViewRight')
+                          </div>
+                    </div>
+                </div>
+           </div>
+
+          <div class="text_foot" ng-controller="frontTag">
+            @include('front.templates.tag')
+          </div>
+    </div>
+</section>
+
+@endsection

@@ -1,0 +1,110 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <a href="/administrator/products_categorys" class="btn bg-maroon" title="{{lang_ad.a_template_btn_back}}">
+      <i class="fa fa-undo" aria-hidden="true"></i>
+    </a>
+    <button type="button" class="btn bg-olive pull-right" onclick="postFrom()" title="{{lang_ad.a_template_btn_save}}">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12" ng-controller="productsCategorys">
+    <form method="POST" action="{{ route('BackController.products_categorys_edit_post') }}" id="adForm" enctype="multipart/form-data">
+        {{ csrfField() }}
+        <input type="hidden" name="txtId" value="{{data_edit.id}}" />
+        <input type="hidden" catParent="{{data_edit.parent_id}}" id="catParent"/>
+        <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#tab_0" data-toggle="tab">
+                    <img src="/images/flags/{{ lang_ad_active }}_flag.png" />
+                </a>
+              </li>
+            </ul>
+            <div class="tab-content system_tab">
+              <div class="tab-pane active" id="tab_0">
+                  <table class="table table-condensed">
+                    <tr>
+                      <td style="width:25%">
+                        {{lang_ad.a_template_select_cat}}
+                      </td>
+                      <td>
+                        <select class="ad_slt_cat" name="sltParentId">
+                          <option value="0">{{lang_ad.a_template_not_selected}}</option>
+                          @raw
+                            <option ng-repeat="val in productsCategorys" value="{{val.id}}"
+                              ng-selected="val.id == catParent">
+                              {{val.cat_name}}
+                            </option>
+                          @endraw
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_status}}</td>
+                      <td>                  
+                        <select class="form-control width_50" name="sltStatus">
+                          <option value="1" {{{data_edit.status == 1 ? 'selected="selected"' : null}}}>
+                            {{{lang_ad.a_template_on}}}
+                          </option>
+                          <option value="0" {{{data_edit.status == 0 ? 'selected="selected"' : null}}}>
+                            {{{lang_ad.a_template_off}}}
+                          </option>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_views}}</td>
+                      <td><input type="number" name="txtViews" class="form-control" value="{{data_edit.views}}"></td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_hightlights}}</td>
+                      <td><input type="number" name="txtHightlights" class="form-control" value="{{data_edit.hightlights}}"></td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_arrange}}</td>
+                      <td>
+                        <input type="number" name="txtArrange" class="form-control" value="{{data_edit.arrange}}">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_cat_name}} <span class="color_red">*</span></td>
+                      <td>
+                        <input type="text" name="txtName" class="form-control" value="{{data_edit.cat_name}}">
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_small_description}}</td>
+                      <td><textarea class="form-control" rows="3" name="txtSmallDescription">{{data_edit.small_description}}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_description}}</td>
+                      <td><textarea class="form-control" rows="3" name="txtDescription">{{data_edit.description}}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_meta_title}}</td>
+                      <td><textarea class="form-control" rows="3" name="txtMetaTitle">{{data_edit.meta_title}}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_meta_description}}</td>
+                      <td><textarea class="form-control" rows="3" name="txtMetaDescription">{{data_edit.meta_description}}</textarea></td>
+                    </tr>
+                    <tr>
+                      <td>{{lang_ad.a_template_meta_keyword}}</td>
+                      <td><textarea class="form-control" rows="3" name="txtMetaKeyword">{{data_edit.meta_keyword}}</textarea></td>
+                    </tr>
+                  </table>
+              </div>
+            </div>
+        </div>
+    </form>
+  </div>
+@endsection

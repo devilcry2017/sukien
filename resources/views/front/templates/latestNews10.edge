@@ -1,0 +1,17 @@
+<h2 class="title_td_nb">
+    <span>10 tin đăng mới nhất</span>
+</h2>
+<ul class="ul_list_td_h">
+    @raw
+    <li ng-repeat="val in frontLastestNews10">
+        <a href="{{val.ev_alias}}" title="{{val.news_name}}">
+            <figure style="background-image: url(/images/evnews/{{val.news_image}})"></figure>
+            <div class="info_list_td_h">
+                <h3>{{val.news_name}}</h3>
+                <b>{{val.news_price | number}} VNĐ</b>                
+                <span>{{val.news_small_content}}</span>
+            </div>
+        </a>
+    </li>
+    @endraw
+</ul>

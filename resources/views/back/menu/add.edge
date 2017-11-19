@@ -1,0 +1,103 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <a href="/administrator/menu" class="btn bg-maroon" title="{{lang_ad.a_template_btn_back}}">
+      <i class="fa fa-undo" aria-hidden="true"></i>
+    </a>
+    <button type="button" class="btn bg-olive pull-right" onclick="postFrom()" title="{{lang_ad.a_template_btn_save}}">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12" ng-controller="menu">
+  <form method="POST" action="{{ route('BackController.menu_add_post') }}" id="adForm">
+      {{ csrfField() }}
+      <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#tab_0" data-toggle="tab">
+                  <img src="/images/flags/{{ lang_ad_active }}_flag.png" />
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content system_tab">
+            <div class="tab-pane active" id="tab_0">
+                <table class="table table-condensed">
+                  <tr>
+                    <td style="width:25%">
+                      {{lang_ad.menu_select}}
+                    </td>
+                    <td>
+                      <select class="ad_slt_cat" name="sltParentId">
+                        <option value="0">{{lang_ad.a_template_not_selected}}</option>
+                        @raw
+                          <option ng-repeat="val in menu" value="{{val.id}}">{{val.cat_name}}</option>
+                        @endraw
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      {{lang_ad.menu_group}}
+                    </td>
+                    <td>
+                      <select class="ad_slt_cat" name="sltGroup">
+                        <option value="1">{{{lang_ad.menu_group_h}}}</option>
+                        <option value="2">{{{lang_ad.menu_group_f}}}</option>
+                        <option value="3">{{{lang_ad.menu_group_l}}}</option>
+                      </select>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>{{lang_ad.a_template_arrange}}</td>
+                    <td>
+                      <input type="number" name="txtArrange" class="form-control width_50" value="1">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.menu_name}} <span class="color_red">*</span></td>
+                    <td>
+                      <input type="text" name="txtName" class="form-control" id="txtName" onkeyup="ChangeToSlug();">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.menu_alias}}</td>
+                    <td>
+                      <input type="text" name="txtAlias" class="form-control" id="txtAlias">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_small_description}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtSmallDescription"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_description}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtDescription" id="description"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_meta_title}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtMetaTitle"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_meta_description}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtMetaDescription"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_meta_keyword}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtMetaKeyword"></textarea></td>
+                  </tr>
+                </table>
+            </div>
+          </div>
+      </div>
+  </form>
+  </div>
+@endsection

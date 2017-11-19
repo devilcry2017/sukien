@@ -1,0 +1,102 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <a href="/administrator/banner" class="btn bg-maroon" title="{{lang_ad.a_template_btn_back}}">
+      <i class="fa fa-undo" aria-hidden="true"></i>
+    </a>
+    <button type="button" class="btn bg-olive pull-right" onclick="postFrom()" title="{{lang_ad.a_template_btn_save}}">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12" ng-controller="newsCategorys">
+  <form method="POST" action="{{ route('BackController.banner_edit_post') }}" id="adForm" enctype="multipart/form-data">
+      {{ csrfField() }}
+      <input type="hidden" name="txtId" value="{{data_edit.id}}" />
+      <input type="hidden" catParent="{{data_edit.cat_id}}" id="catParent"/>
+      <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#tab_0" data-toggle="tab">
+                  <img src="/images/flags/{{ lang_ad_active }}_flag.png" />
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content system_tab">
+            <div class="tab-pane active" id="tab_0">
+                <table class="table table-condensed">
+                  <tr>
+                    <td style="width:25%">
+                      {{lang_ad.menu_group}}
+                    </td>
+                    <td>
+                      <select class="ad_slt_cat" name="sltGroup">
+                          <option value="1" {{{data_edit.banner_group == 1 ? 'selected="selected"' : null}}}>
+                            {{lang_ad.banner_group_1}}
+                          </option>
+                          <option value="2" {{{data_edit.banner_group == 2 ? 'selected="selected"' : null}}}>
+                            {{lang_ad.banner_group_2}}
+                          </option>
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_status}}</td>
+                    <td>
+                        <select class="ad_slt_cat" name="sltStatus">
+                          <option value="1" {{{data_edit.banner_status == 1 ? 'selected="selected"' : null}}}>
+                            {{{lang_ad.a_template_on}}}
+                          </option>
+                          <option value="0" {{{data_edit.banner_status == 0 ? 'selected="selected"' : null}}}>
+                            {{{lang_ad.a_template_off}}}
+                          </option>
+                        </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_arrange}}</td>
+                    <td>
+                      <input type="number" name="txtArrange" class="form-control width_50" value="{{data_edit.banner_sort}}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_news_name}} <span class="color_red">*</span></td>
+                    <td>
+                      <input type="text" name="txtName" class="form-control" value="{{data_edit.banner_name}}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.menu_alias}}</td>
+                    <td>
+                      <input type="text" name="txtAlias" class="form-control" value="{{data_edit.banner_alias}}">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_avatar}}</td>
+                    <td>
+                      @if(data_edit.banner_image !== '')
+                        <img src="/images/banner/{{data_edit.banner_image}}" class="ad_avatar_edit"/>
+                      @else
+                        <img src="/images/no-image.png" class="ad_avatar_edit"/>
+                      @endif
+                      <input type="file" id="flImage" name="flImage">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_small_description}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtSmallDescription">{{data_edit.banner_description}}</textarea></td>
+                  </tr>
+                </table>
+            </div>
+          </div>
+      </div>
+  </form>
+  </div>
+  @endsection

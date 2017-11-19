@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="{{lang}}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="robots" content="nofollow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="" />
+        <meta name="keywords" content="" />
+        <meta name="author" content="Mr. Quốc - Phone: 0937 587 087 - Skype: quocbao_design">
+        <title>{{title}}</title>
+        <link rel="shortcut icon" href="/images/login/login_fav.png">
+	      <link href="/front/css/login.css" rel="stylesheet" type="text/css">
+        <link href="/front/fonts/css/font-awesome.css" rel="stylesheet" />
+
+        <script src="/front/js/jquery-3.2.1.js"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="login">
+                <a href="{{ url_host }}/" class="back_to_home">
+                    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;
+                    {{lang_trans.back_to_home}}
+                </a>
+                <a href="{{ url_host }}login" class="back_to_login">
+                    <i class="fa fa-lock" aria-hidden="true"></i>&nbsp;
+                    {{lang_trans.login_system}}
+                </a>
+                <a href="{{ url_host }}resetPassword" class="back_to_forget">
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>&nbsp;
+                    {{lang_trans.password_recovery}}
+                </a>
+
+                @!section('content')
+            </div>
+    <!--Page Loader---------------------------------------------------------------->
+            <div class="loader">
+                @include('auth.loading')
+            </div>
+    <!--Page Loader ends----------------------------------------------------------->
+        </div>
+    </body>
+    <script src='/front/js/auth.js'></script>
+</html>

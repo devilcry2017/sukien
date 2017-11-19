@@ -1,0 +1,41 @@
+@layout('auth.auth_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+    <div class="login">
+        <form method="POST" action="{{ route('UsersController.postLogin') }}">
+            {{ csrfField() }}
+             <fieldset>
+               <legend>
+                   <i class="fa fa-lock" aria-hidden="true"></i>
+                    {{heading}}
+                </legend>
+                <div class="bg-danger">
+                  @if(hasErrorFor('username'))
+                    <span>{{ getErrorFor('username') }}</span>
+                  @endif
+                  @if(hasErrorFor('password'))
+                    <span>{{ getErrorFor('password') }}</span>
+                  @endif
+                </div>
+                <br/>
+                {{lang_trans.account}} <span class="color_red">*</span>
+                <br/>
+                <input type="text"  name="username"  placeholder="*************" value="{{ old('username', '') }}"/>
+                <br/>
+                {{lang_trans.password}} <span class="color_red">*</span>
+                 <br/>
+                 <input type="password"  name="password"  placeholder="*************" value="{{ old('password', '') }}"/>
+                 <br/>
+                 <input type="submit" name="btnLogin" value="{{lang_trans.login}}"/> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                 <a href="{{ url_host }}/resetPassword">
+                    <i class="fa fa-unlock-alt" aria-hidden="true"></i>&nbsp;
+                    {{lang_trans.forgot_your_password}}
+                  </a>
+             </fieldset>
+          </form>
+     </div>
+@endsection

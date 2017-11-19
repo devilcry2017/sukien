@@ -1,0 +1,38 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+  <div class="col-lg-12 col-xs-12">
+      <p class="ad_note">
+        {{lang_ad.a_system_lang_note}}
+      </p>
+      <table class="table table-language">
+        <tr>
+          <th style="width:30px;"><i class="fa fa-sort-numeric-asc" aria-hidden="true"></i></td>
+          <th>{{lang_ad.a_template_name_display}}</th>
+          <th>{{lang_ad.a_template_country}}</th>
+          <th>{{lang_ad.a_template_code}}</th>
+          <th>{{lang_ad.a_template_default}}</th>
+        </tr>
+        @each(val in language_list)
+        <tr>
+          <td>{{val.id}}</td>
+          <td>{{ val.name }}</td>
+          <td>
+            <img src="/images/flags/{{ val.image }}" class="ad_lang_flags"/>
+            {{ val.country }}
+          </td>
+          <td>{{ val.language_code }}</td>
+          <td class="ad_lang_check">
+            @if(val.default == 1)
+              <i class="fa fa-check" aria-hidden="true"></i>
+            @endif
+          </td>
+        </tr>
+        @endeach
+      </table>
+  </div>
+@endsection

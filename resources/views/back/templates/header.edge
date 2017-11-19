@@ -1,0 +1,77 @@
+<a href="{{ url_admin }}home" class="logo" title="{{lang_ad.a_template_system}}">
+  <span class="logo-mini"><b><i class="fa fa-home" aria-hidden="true"></i></b></span>
+  <span class="logo-lg">
+    <i class="fa fa-home" aria-hidden="true"></i> <b>{{lang_ad.a_template_system}}</b>
+  </span>
+</a>
+
+<nav class="navbar navbar-static-top">
+  <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" title="{{lang_ad.a_show_hide}}">
+    <span class="sr-only">Toggle navigation</span>
+  </a>
+  <div class="back_lang" ng-controller="backLang">
+      @raw
+      <img src="/images/flags/{{ lang_active }}_flag.png" />
+      <select id="back_lang">
+        <option value="{{ val.language_code }}" ng-repeat="val in lang_list" value="{{val.id}}"
+          ng-selected="val.language_code == ad_lang">
+          {{ val.name }}
+        </option>
+      </select>
+      <input type="hidden" name="_csrf" value="{{ csrfToken }}" id="token">
+      @endraw
+  </div>
+  <div class="navbar-custom-menu">
+    <ul class="nav navbar-nav">
+      <li>
+        <a href="{{ url_host }}" target="_blank" title="Xem website">
+          <i class="fa fa-eye" aria-hidden="true"></i>
+          {{lang_ad.a_view_website}}
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="fa fa-envelope-o"></i>
+          <span class="label label-danger">100</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="#">
+          <i class="fa fa-bell-o"></i>
+          <span class="label label-danger">10</span>
+        </a>
+      </li>
+      <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+          <span class="hidden-xs">
+          {{ auth.user.fullname }}
+          </span>
+          &nbsp;<i class="fa fa-angle-down" aria-hidden="true"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="user-body">
+            <a href="#">
+              <i class="fa fa-users" aria-hidden="true"></i>
+              {{lang_ad.a_top_staff}}
+            </a>
+          </li>
+          <li class="user-body">
+            <a href="#">
+              <i class="fa fa-address-card-o" aria-hidden="true"></i>
+              {{lang_ad.a_top_account}}
+            </a>
+          </li>
+          <li class="user-body">
+            <a href="{{url_host}}logout">
+              <i class="fa fa-sign-out" aria-hidden="true"></i>
+              {{lang_ad.a_top_logout}}
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>

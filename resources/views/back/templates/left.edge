@@ -1,0 +1,124 @@
+<section class="sidebar">
+  <ul class="sidebar-menu">
+    <li class="{{system}}">
+      <a href="{{url_admin}}system">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+        <span>{{lang_ad.a_m_system_config}}</span>
+      </a>
+    </li>
+    <li class="{{language}}">
+      <a href="{{url_admin}}language">
+        <i class="fa fa-globe" aria-hidden="true"></i>
+        <span>{{lang_ad.a_m_system_lang}}</span>
+      </a>
+    </li>
+
+    <li class="{{menu}}">
+      <a href="{{url_admin}}menu">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+        <span>{{lang_ad.menu_config}}</span>
+      </a>
+    </li>
+
+
+    <li class="{{evNews}}">
+      <a href="#">
+        <i class="fa fa-file-o" aria-hidden="true"></i>
+        <span>{{lang_ad.ev_news}}</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+          <a href="{{url_admin}}evNewsGroup">
+            {{lang_ad.ev_news_group}}
+          </a>
+        </li>        
+        <li>
+          <a href="{{url_admin}}evNews">
+            {{lang_ad.ev_news_list}}
+          </a>
+         </li>
+       </ul>
+    </li>
+
+    <li class="{{news_cat}}">
+      <a href="">
+        <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+        <span>{{lang_ad.a_m_news_management}}</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+            <a href="{{url_admin}}news_categorys">
+              {{lang_ad.a_m_news_catgory}}
+            </a>
+        </li>
+        <li>
+            <a href="{{url_admin}}news">
+              {{lang_ad.a_m_news_list}}
+            </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="{{module}}">
+      <a href="">
+        <i class="fa fa-puzzle-piece" aria-hidden="true"></i>
+        <span>{{lang_ad.module}}</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+            <a href="{{url_admin}}banner">
+              {{lang_ad.banner}}
+            </a>
+        </li>
+        <li>
+            <a href="{{url_admin}}slide">
+              {{lang_ad.slide}}
+            </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="treeview @!section('active')">
+      <a href="#">
+        <i class="fa fa-floppy-o" aria-hidden="true"></i>
+        <span>{{lang_ad.a_m_storage}}</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+      <ul class="treeview-menu">
+        <li>
+            <a href="pages/examples/invoice.html">
+              {{lang_ad.a_m_storage_file}}
+            </a>
+        </li>
+        <li>
+            <a href="pages/examples/invoice.html">
+              {{lang_ad.a_m_storage_comment}}
+            </a>
+        </li>
+        <li>
+            <a href="pages/examples/invoice.html">
+              {{lang_ad.a_m_storage_evaluate}}
+            </a>
+        </li>
+      </ul>
+    </li>
+
+    <li class="{{loginHistorys}}">
+      <a href="{{url_admin}}login_history">
+        <i class="fa fa-history" aria-hidden="true"></i>
+        <span>{{lang_ad.a_m_login_history}}</span>
+      </a>
+    </li>
+  </ul>
+</section>

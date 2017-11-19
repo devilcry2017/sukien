@@ -1,0 +1,97 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <a href="/administrator/products" class="btn bg-maroon" title="{{lang_ad.a_template_btn_back}}">
+      <i class="fa fa-undo" aria-hidden="true"></i>
+    </a>
+    <button type="button" class="btn bg-olive pull-right" onclick="postFrom()" title="{{lang_ad.a_template_btn_save}}">
+      <i class="fa fa-floppy-o" aria-hidden="true"></i>
+    </button>
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12" ng-controller="productsCategorys">
+  <form method="POST" action="{{ route('BackController.products_add_post') }}" id="adForm" enctype="multipart/form-data">
+      {{ csrfField() }}
+      <div class="nav-tabs-custom">
+          <ul class="nav nav-tabs">
+            <li class="active">
+              <a href="#tab_0" data-toggle="tab">
+                  <img src="/images/flags/{{ lang_ad_active }}_flag.png" />
+              </a>
+            </li>
+          </ul>
+          <div class="tab-content system_tab">
+            <div class="tab-pane active" id="tab_0">
+                <table class="table table-condensed">
+                  <tr>
+                    <td style="width:25%">
+                      {{lang_ad.a_template_select_cat}}
+                    </td>
+                    <td>
+                      <select class="ad_slt_cat" name="sltParentId">
+                        @raw
+                          <option ng-repeat="val in productsCategorys" value="{{val.id}}">{{val.cat_name}}</option>
+                        @endraw
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_views}}</td>
+                    <td><input type="number" name="txtViews" class="form-control"></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_hightlights}}</td>
+                    <td><input type="number" name="txtHightlights" class="form-control"></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_arrange}}</td>
+                    <td>
+                      <input type="number" name="txtArrange" class="form-control" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_products_name}} <span class="color_red">*</span></td>
+                    <td>
+                      <input type="text" name="txtName" class="form-control" value="">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_avatar}}</td>
+                    <td>
+                      <input type="file" id="flImage" name="flImage">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_small_description}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtSmallDescription"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_description}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtDescription"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_meta_title}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtMetaTitle"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_meta_description}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtMetaDescription"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td>{{lang_ad.a_template_meta_keyword}}</td>
+                    <td><textarea class="form-control" rows="3" name="txtMetaKeyword"></textarea></td>
+                  </tr>
+                </table>
+            </div>
+          </div>
+      </div>
+      </form>
+  </div>
+@endsection

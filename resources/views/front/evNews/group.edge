@@ -1,0 +1,73 @@
+@layout('front.templates.master')
+
+@section('title')
+{{title}}
+@endsection
+
+
+@section('content')
+
+<section class="filter_home">
+    <div class="min_wrap">
+        @include('front.templates.login_news_top')
+
+        <div class="fh_2">
+            @include('front.templates.searchTop')
+        </div>
+    </div>
+</section>
+
+<section class="f_bg">
+    <div class="min_wrap">
+        <div class="f_home clearfix">
+            <div class="content">
+                <div class="td_nb block_ct">
+                  <div class="pagination">
+                    <a href="{{url_host}}" title="Trang chủ">Trang chủ</a>
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <a>{{name}}}</a>
+                  </div>
+                </div>
+                <div class="td_nb block_ct main_td_nb">
+                  <ul class="ul_td_nb">
+                    @each(val in listNews)
+                    <li>
+                        <a href="{{val.ev_alias}}" title="{{val.news_name}}">
+                            <figure class="ndnb_1" style="background-image: url(/images/evnews/{{val.news_image}});">
+                            </figure>
+                            <div class="ndnb_0">
+                                <div class="ndnb_3">
+                                    <h3>{{val.news_name}}</h3>
+                                    <b>{{val.news_price | number}} VNĐ</b>
+                                    <span class="small_des">
+                                      {{val.news_small_content}}
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    @endeach
+                  </ul>
+                </div>
+            </div>
+
+           <div class="sidebar">
+                    <div class="block_sb">
+                          <div class="modu_xhb block_sb" ng-controller="frontBannerRight">
+                            @include('front.templates.bannerRight')
+                          </div>
+
+                          <div class="da_sb block_sb" ng-controller="frontNewsViewRight5">
+                            @include('front.templates.newsViewRight')
+                          </div>
+                    </div>
+                </div>
+           </div>
+
+          <div class="text_foot" ng-controller="frontTag">
+            @include('front.templates.tag')
+          </div>
+    </div>
+</section>
+
+@endsection

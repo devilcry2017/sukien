@@ -1,0 +1,22 @@
+<h4 class="title_sb_new">
+    Tin đăng xem nhiều
+</h4>
+
+<div class="main_sb">
+    <ul class="ul_da_sb">
+        @raw
+         <li ng-repeat="val in frontNewsViewRight5">
+            <a href="{{val.ev_alias}}" title="{{val.news_name}}">
+                <figure class="li_danb_1">
+                    <img src="/images/evnews/{{val.news_image}}" alt="{{val.ev_alias}}">
+                </figure>
+                <div class="li_danb_2">
+                    <h3>{{val.news_name}}</h3>
+                    <b>{{val.news_price | number}} VNĐ</b>                
+                    <span>{{val.news_small_content}}</span>
+                </div>
+            </a>
+        </li>
+        @endraw
+    </ul>
+</div>

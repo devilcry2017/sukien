@@ -1,0 +1,68 @@
+@layout('back.templates.back_master')
+
+@section('title')
+{{title}}
+@endsection
+
+@section('content')
+  <!--button------------------------------------------------------------------->
+  <div class="col-lg-12 col-xs-12">
+    <button type="button" class="btn bg-maroon pull-right" onclick="postFromConfirm()" title="{{lang_ad.a_template_btn_dell}}">
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
+    </button>
+    <input type="text" ng-model="search" class="form-control ad_search" placeholder="{{lang_ad.a_search_placeholder}}">
+  </div>
+  <!--/button------------------------------------------------------------------>
+
+  <div class="col-lg-12 col-xs-12" ng-controller="loginHistorys">
+
+    <form method="POST" action="{{ route('BackController.login_history_post') }}" id="deleteForm">
+        {{ csrfField() }}
+        <table class="table table-list table-hover">
+            <thead>
+                <tr>
+                  <th ng-click="sort('id')" style="width:80px;">
+                      ID <i class="fa fa-sort-numeric-asc" aria-hidden="true"></i>
+                      <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th ng-click="sort('time_login')">
+                      {{lang_ad.time_login}}
+                      <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='time_login'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th ng-click="sort('account')">
+                      {{lang_ad.account}}
+                      <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='account'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th ng-click="sort('ip_address')">
+                      {{lang_ad.ip_address}}
+                      <span class="glyphicon sort-icon pull-right" ng-show="sortKey=='ip_address'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                  </th>
+                  <th class="text_center">
+                    <input type="checkbox" onclick="checked_all(this)">
+                  </th>
+                </tr>
+            </thead>
+            @raw
+            <tbody>
+                <tr dir-paginate="(key, val) in loginHistorys|orderBy:sortKey:reverse|filter:search|itemsPerPage:15">
+                  <td>{{ val.id }}</td>
+                  <td>{{ val.created_at | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+                  <td>{{ val.username }}</td>
+                  <td>
+                    {{ val.ip_address }}
+                  </td>
+                  <td class="text_center">
+                    <input type="checkbox" name="ckb[]" value="{{ val.id }}">
+                  </td>
+                </tr>
+            </tbody>
+            @endraw
+        </table>
+    </form>
+        <dir-pagination-controls
+           max-size="5"
+           direction-links="true"
+           boundary-links="true" >
+        </dir-pagination-controls>
+    </div>
+@endsection

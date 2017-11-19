@@ -1,0 +1,66 @@
+@layout('front.templates.master')
+
+@section('content')
+
+<section class="filter_home">
+    <div class="min_wrap">
+        @include('front.templates.login_news_top')
+
+        <div class="fh_2">
+            @include('front.templates.searchTop')
+        </div>
+    </div>
+</section>
+
+<section class="f_bg">
+    <div class="min_wrap" ng-controller="frontContact">
+        <div class="f_home clearfix">
+            <div class="content">
+                <div class="td_nb block_ct">
+                  <div class="pagination">
+                    <a href="{{url_host}}" title="Trang chủ">Trang chủ</a>
+                      <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    <a>Liên hệ</a>
+                  </div>
+                </div>
+                <div class="td_nb block_ct">
+                  @raw
+                  <h1>{{contact[7].company_name}}</h1>
+                  <p>
+                    Địa chỉ: {{contact[2].address}}
+                    <br>
+                    Tel: {{contact[4].phone}}
+                    <br/>
+                    Hotline: {{contact[5].hotline}}
+                    <br/>
+                    Email: <a href="mailto:{{contact[3].email}}">{{contact[3].email}}</a>
+                    <br/>
+                    Website:{{contact[8].website}}
+                  </p>
+                  @endraw
+                  <div class="google_map">
+                    {{{googleMap.systems_description}}}
+                  </div>
+                </div>
+            </div>
+
+           <div class="sidebar">
+                    <div class="block_sb">
+                          <div class="modu_xhb block_sb" ng-controller="frontBannerRight">
+                            @include('front.templates.bannerRight')
+                          </div>
+
+                          <div class="da_sb block_sb" ng-controller="frontNewsViewRight5">
+                            @include('front.templates.newsViewRight')
+                          </div>
+                    </div>
+                </div>
+           </div>
+
+          <div class="text_foot" ng-controller="frontTag">
+            @include('front.templates.tag')
+          </div>
+    </div>
+</section>
+
+@endsection
